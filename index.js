@@ -1,15 +1,22 @@
 const express = require("express");
-const multer = require("multer");
 
 const app = express();
-const upload = multer({ dest: "uploads/" });
+
+// Middleware to parse JSON
+app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Welcome to the Node.js Bot Hosting Service!");
+  res.send("Server is running!");
 });
 
-app.post("/upload", upload.single("file"), (req, res) => {
-  res.send("File uploaded successfully!");
+// Example API endpoint
+app.get("/api/test", (req, res) => {
+  res.json({ message: "API is working!" });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 module.exports = app;
