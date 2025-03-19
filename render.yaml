@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: php-upload-service
+    env: docker
+    plan: free
+    region: oregon
+    repo: https://github.com/mksir12/zahikku
+    branch: main
+    envVars:
+      - key: PORT
+        value: 80
